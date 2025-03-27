@@ -23,9 +23,12 @@ public class QuestaoA{
         if((right-left+1)%2==0){
             return meio(left,meio,k) + meio(meio+1,right,k);
         }
-        if(left==right || right-left<k){
+        if(right-left<k){
             return meio;
         }
-        return meio + meio(left,meio-1,k) + meio(meio+1,right,k);
+        if(left!=right){
+            return meio+ meio(left,meio-1,k) + meio(meio+1,right,k);
+        }
+        return meio;
     }
 }
