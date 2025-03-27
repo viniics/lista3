@@ -4,27 +4,27 @@ public class QuestaoA{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int casosTeste = Integer.valueOf(sc.nextLine());
-        int sorte = 0;
+        Long casosTeste = Long.valueOf(sc.nextLine());
+        Long sorte = (long) 0;
         for(int i=0;i<casosTeste;i++){
             String[] valores = sc.nextLine().split(" ");
-            Integer n = Integer.valueOf(valores[0]);
-            Integer k = Integer.valueOf(valores[1]);
-            sorte += meio(1, n, k);
+            Long n = Long.valueOf(valores[0]);
+            Long k = Long.valueOf(valores[1]);
+            sorte += meio((long) 1, n, k);
+            System.out.println(sorte);
+            sorte = (long) 0;
         }
-        System.out.println(sorte);
+
+        sc.close();
     }
 
-    public static int meio(int left, int right, int k){
-        if(right-left<k){
-            return 0;
-        }
-        int meio = (left+right)/2;
-        if(left==right){
-            return meio;
-        }
+    public static Long meio(Long left, Long right, Long k){
+        Long meio = (left+right)/2;        
         if((right-left+1)%2==0){
             return meio(left,meio,k) + meio(meio+1,right,k);
+        }
+        if(left==right || right-left<k){
+            return meio;
         }
         return meio + meio(left,meio-1,k) + meio(meio+1,right,k);
     }
